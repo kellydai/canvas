@@ -1,0 +1,44 @@
+import simplegui
+
+def format_time(num):
+    
+    minutes=num//60
+    seconds=num%60
+    if minutes==0:
+        print str(seconds)+" seconds"
+    elif seconds==0:
+        print str(minutes)+"minutes"
+    else:
+        print str(minutes)+" minutes"+str(seconds)+" seconds"
+    
+
+format_time(600)
+format_time(6)
+format_time(606)
+
+
+
+import simplegui
+
+radius_increment=5
+radius=20
+
+def draw(canvas):
+    canvas.draw_circle([200,200],radius,12,"green")
+
+
+def increase_radius():
+    global radius,radius_increment
+    radius+=radius_increment    
+    
+def decrease_radius():
+    global radius,radius_increment
+    if radius>radius_increment:
+        radius-=radius_increment
+    
+frame=simplegui.create_frame("ball control",400,400)
+frame.set_draw_handler(draw)
+frame.add_button("increase radius",increase_radius)
+frame.add_button("decrease radius",decrease_radius)
+              
+frame.start()
